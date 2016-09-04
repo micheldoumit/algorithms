@@ -27,8 +27,8 @@ def process(array, x, y, value)
  puts "array: #{array}, x: #{x} y: #{y} value: #{value}"
  tx, ty = y, array.length-1-x
  old_value = array[tx][ty]
- array[tx][ty] = value 
- return array if tx == 0 && ty == 1
+ array[tx][ty] = value
+ return array if tx == 0 && ty == array.length - 1
  process(array, tx, ty, old_value)
 end
 
