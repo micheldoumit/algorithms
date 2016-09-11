@@ -1,5 +1,27 @@
 require_relative 'helpers'
 
+
+def test(method)
+  matrix = [
+    [0, 1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10, 11],
+    [12, 13, 14, 15, 16, 17],
+    [18, 19, 20, 21, 22, 23],
+    [24, 25, 26, 27, 28, 29],
+    [30, 31, 32, 33, 34, 35]
+  ]
+
+  expected = [
+    [30,24,18,12,6,0],
+    [31,25,19,13,7,1],
+    [32,26,20,14,8,2],
+    [33,27,21,15,9,3],
+    [34,28,22,16,10,4],
+    [35,29,23,17,11,5]]
+
+    assert(send(method, matrix), expected)
+end
+
 # mine
 def rotate_90(image)
   result = []
@@ -15,10 +37,9 @@ def rotate_90(image)
   result
 end
 
-#assert(rotate_90([[1,2,3],[4,5,6],[7,8,9]]), [[7,4,1],[8,5,2],[9,6,3]])
+test('rotate_90')
 
 # mine take 2 (in place)
-
 def rotate_90_in_place(array)
   #print_array(array)
   process(array, 0, array.length-1, array[0][array.length-1])
@@ -33,33 +54,9 @@ def process(array, x, y, value)
  process(array, tx, ty, old_value)
 end
 
-
-#assert(rotate_90_in_place([[1,2,3],[4,5,6],[7,8,9]]), [[7,4,1],[8,5,2],[9,6,3]])
-
-
-# def rotate_90_book(matrix)
-#   print_array(matrix)
-#   n = 2
-#   for layer in 0..(n/2) do
-#     first = layer
-#     last = n - 1 - layer
-#     for i in first..last do
-#       break if i >= last
-#       puts "#{i}"
-#       offset = i - first
-#       top = matrix[first][i]
-#       matrix[first][i] = matrix[last-offset][first]
-#       matrix[last-offset][first] = matrix[last][last-offset]
-#       matrix[last][last-offset] = matrix[i][last]
-#       matrix[i][last] = top
-#     end
-#   end
-#   print_array(matrix)
-#   matrix
-# end
+# test('rotate_90_in_place') fails :-(
 
 def rotate_90_book(matrix)
-  print_array(matrix)
   size = matrix.length
   layers = size / 2
   for layer in 0..(layers-1) do
@@ -69,47 +66,20 @@ def rotate_90_book(matrix)
       offset = element - first
 
       top = matrix[first][element]
-      right_side = matrix[element][last]
-      bottom = matrix[last][last-offset]
-      left_side = matrix[last-offset][first]
+      # top <= left
+      matrix[first][element] = matrix[last-offset][first]
+      # left <= botton
+      matrix[last-offset][first] = matrix[last][last-offset]
 
-      matrix[first][element] = left_side
+      # botton = right
+      matrix[last][last-offset] = matrix[element][last]
+
+      # right <= saved top
       matrix[element][last] = top
-      matrix[last][last-offset] = right_side
-      matrix[last-offset][first] = bottom
-
-      puts "#{top} #{right_side} #{left_side} #{bottom} "
-
     end
   end
-  #print_array(matrix)
+  print_array(matrix)
   matrix
 end
 
-# matrix = [
-# [0, 1, 2],
-# [3, 4, 5],
-# [6, 7, 8]
-# ]
-
-matrix = [
-[0, 1, 2, 3, 4, 5],
-[6, 7, 8, 9, 10, 11],
-[12, 13, 14, 15, 16, 17],
-[18, 19, 20, 21, 22, 23],
-[24, 25, 26, 27, 28, 29],
-[30, 31, 32, 33, 34, 35]
-]
-
-expected = [
-[30, 23, 2, 3, 4, 5],
-[6, 7, 8, 9, 10, 11],
-[12, 13, 14, 15, 16, 17],
-[18, 19, 20, 21, 22, 23],
-[24, 25, 26, 27, 28, 29],
-[30, 31, 32, 33, 34, 35]
-]
-
-
-rotate_90_book(matrix)
-#assert(rotate_90_book([[1,2,3],[4,5,6],[7,8,9]]), [[7,4,1],[8,5,2],[9,6,3]])
+test('rotate_90_book')

@@ -15,7 +15,7 @@ end
 
 def print_array(array)
   separator = ''
-  array.length.times { separator += "-"}  
+  array.length.times { separator += "-"}
   array.each do |r|
     puts r.each { |p| p }.join(" ")
   end
