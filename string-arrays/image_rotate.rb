@@ -20,9 +20,9 @@ end
 # mine take 2 (in place)
 
 def rotate_90_in_place(array)
-  print_array(array)
+  #print_array(array)
   process(array, 0, array.length-1, array[0][array.length-1])
-  print_array(array)
+  #print_array(array)
 end
 
 def process(array, x, y, value)
@@ -66,28 +66,50 @@ def rotate_90_book(matrix)
     first = layer
     last = size - first - 1
     for element in first..last - 1
-      # offset = element - first ?
+      offset = element - first
 
-      top_left = matrix[first][element]
-      top_right = matrix[element][last]
-      botton_left = matrix[last-element][first]
-      botton_right = matrix[last][last-element]
+      top = matrix[first][element]
+      right_side = matrix[element][last]
+      bottom = matrix[last][last-offset]
+      left_side = matrix[last-offset][first]
 
-      matrix[first][element] = botton_left
-      matrix[element][last] = top_left
-      matrix[last-element][first] = botton_right
-      matrix[last][last-element] = top_right
+      matrix[first][element] = left_side
+      matrix[element][last] = top
+      matrix[last][last-offset] = right_side
+      matrix[last-offset][first] = bottom
+
+      puts "#{top} #{right_side} #{left_side} #{bottom} "
 
     end
   end
-  print_array(matrix)
+  #print_array(matrix)
   matrix
 end
 
+# matrix = [
+# [0, 1, 2],
+# [3, 4, 5],
+# [6, 7, 8]
+# ]
+
 matrix = [
-[0, 1, 2],
-[3, 4, 5],
-[6, 7, 8]
+[0, 1, 2, 3, 4, 5],
+[6, 7, 8, 9, 10, 11],
+[12, 13, 14, 15, 16, 17],
+[18, 19, 20, 21, 22, 23],
+[24, 25, 26, 27, 28, 29],
+[30, 31, 32, 33, 34, 35]
 ]
+
+expected = [
+[30, 23, 2, 3, 4, 5],
+[6, 7, 8, 9, 10, 11],
+[12, 13, 14, 15, 16, 17],
+[18, 19, 20, 21, 22, 23],
+[24, 25, 26, 27, 28, 29],
+[30, 31, 32, 33, 34, 35]
+]
+
+
 rotate_90_book(matrix)
 #assert(rotate_90_book([[1,2,3],[4,5,6],[7,8,9]]), [[7,4,1],[8,5,2],[9,6,3]])
