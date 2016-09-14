@@ -24,6 +24,7 @@ end
 
 # mine
 def rotate_90(image)
+  print_array(image)
   result = []
   image.length.times { result << [] }
   n = image.length - 1
@@ -34,6 +35,7 @@ def rotate_90(image)
       result[y][n-x] = current
     end
   end
+  print_array(result)
   result
 end
 
@@ -41,9 +43,9 @@ test('rotate_90')
 
 # mine take 2 (in place)
 def rotate_90_in_place(array)
-  #print_array(array)
+  print_array(array)
   process(array, 0, array.length-1, array[0][array.length-1])
-  #print_array(array)
+  print_array(array)
 end
 
 def process(array, x, y, value)
@@ -54,7 +56,7 @@ def process(array, x, y, value)
  process(array, tx, ty, old_value)
 end
 
-# test('rotate_90_in_place') fails :-(
+#test('rotate_90_in_place') # fails :-()
 
 def rotate_90_book(matrix)
   size = matrix.length
@@ -63,7 +65,7 @@ def rotate_90_book(matrix)
     first = layer
     last = size - first - 1
     for element in first..last - 1
-      offset = element - first
+      offset = element - layer
 
       top = matrix[first][element]
       # top <= left
@@ -71,7 +73,7 @@ def rotate_90_book(matrix)
       # left <= botton
       matrix[last-offset][first] = matrix[last][last-offset]
 
-      # botton = right
+      # botton <= right
       matrix[last][last-offset] = matrix[element][last]
 
       # right <= saved top
@@ -82,4 +84,7 @@ def rotate_90_book(matrix)
   matrix
 end
 
-test('rotate_90_book')
+#rotate_90_book([[1,2,3], [4,5,6], [7,8,9]])
+#rotate_90_book([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
+
+#test('rotate_90_book')
