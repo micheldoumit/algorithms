@@ -1,4 +1,4 @@
-require_relative 'helpers'
+require_relative '../helpers'
 
 # 1.2 Reverse String
 

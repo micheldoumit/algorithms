@@ -1,4 +1,4 @@
-require_relative 'helpers'
+require_relative '../helpers'
 
 
 #matrix = [[1,0,3],[4,5,6]]
