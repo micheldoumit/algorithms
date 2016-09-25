@@ -6,7 +6,7 @@ require_relative 'helpers'
 def reverse(chars)
   result = StringIO.new
 
-  for i in 5.downto(0)
+  for i in chars.length.downto(0)
     result << chars[i]
   end
 

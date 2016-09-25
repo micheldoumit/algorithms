@@ -20,6 +20,7 @@ def all_characters_uniq?(string)
 end
 
 assert all_characters_uniq?("12345"), true
+assert all_characters_uniq?("123452"), true
 assert all_characters_uniq?(""), true
 assert all_characters_uniq?("A"), true
 assert all_characters_uniq?("123451"), false
