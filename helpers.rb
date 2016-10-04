@@ -22,6 +22,10 @@ def print_array(array)
   puts separator
 end
 
+def list(array)
+  LinkedListNode.from_array(array)
+end
+
 def print_linked_list(head)
   string = []
   while(head.next_item != nil)

@@ -1,4 +1,4 @@
-class LinkedItem
+class LinkedListNode
   attr_accessor :data, :next_item
 
   def initialize(data)
@@ -6,9 +6,9 @@ class LinkedItem
   end
 
   def self.from_array(array)
-    head = LinkedItem.new(array.delete_at(0))
+    head = LinkedListNode.new(array.delete_at(0))
     array.each do |a|
-      head.append(LinkedItem.new(a))
+      head.append(LinkedListNode.new(a))
     end
     head
   end
