@@ -33,6 +33,25 @@ def sum_reverse(head1, head2)
   result_head
 end
 
-print_linked_list(sum_reverse(list([3,1,5]), list([5,9,3])))
+assert(sum_reverse(list([3,1,5]), list([5,9,2])).to_array, [8,0,8])
 
-#assert(sum_reverse(list([3,1,5]), list([5,9,2])).to_array, [8,0,8])
+# book (inpired)
+def sum_reverse_book(l1, l2, carry = 0)
+  return nil if l1 == nil && l2 == nil
+
+  value = carry
+  value += l1.data if l1
+  value += l2.data if l2
+  node_value = value % 10
+  next_carry = value >= 10 ? 1 : 0
+  result = LinkedListNode.new(node_value)
+
+  next_l1 = l1 == nil ? nil : l1.next_item
+  next_l2 = l2 == nil ? nil : l2.next_item
+
+  result.next_item = sum_reverse_book(next_l1, next_l2, next_carry)
+
+  result
+end
+
+assert(sum_reverse_book(list([3,1,5]), list([5,9,2])).to_array, [8,0,8])

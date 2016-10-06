@@ -34,7 +34,7 @@ def print_linked_list(head)
   end
   string << head.data #last
 
-  puts string.join
+  puts string.join('->')
 end
 
 ######## HELPERS ########
