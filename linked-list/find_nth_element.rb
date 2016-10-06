@@ -1,5 +1,4 @@
 require_relative '../helpers.rb'
-require_relative 'linked_list_node.rb'
 
 # mine
 def find_nth_to_last_element(head, n)

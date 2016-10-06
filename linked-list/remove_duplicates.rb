@@ -1,5 +1,4 @@
 require_relative '../helpers.rb'
-require_relative 'linked_list_node.rb'
 
 # mine take 1
 # using an array

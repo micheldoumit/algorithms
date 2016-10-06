@@ -1,5 +1,6 @@
 require 'stringio'
 require 'byebug'
+require_relative 'linked-list/linked_list_node.rb'
 
 ######## HELPERS ########
 $stdout.sync = true

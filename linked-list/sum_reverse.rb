@@ -1,5 +1,4 @@
 require_relative '../helpers.rb'
-require_relative 'linked_list_node.rb'
 
 # mine
 def sum_reverse(head1, head2)
@@ -35,7 +34,7 @@ end
 
 assert(sum_reverse(list([3,1,5]), list([5,9,2])).to_array, [8,0,8])
 
-# book (inpired)
+# book (inspired)
 def sum_reverse_book(l1, l2, carry = 0)
   return nil if l1 == nil && l2 == nil
 
