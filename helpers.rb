@@ -1,5 +1,6 @@
 require 'stringio'
 require 'byebug'
+require_relative 'linked-list/linked_list_node.rb'
 
 ######## HELPERS ########
 $stdout.sync = true
@@ -21,4 +22,20 @@ def print_array(array)
   end
   puts separator
 end
+
+def list(array)
+  LinkedListNode.from_array(array)
+end
+
+def print_linked_list(head)
+  string = []
+  while(head.next_item != nil)
+    string << head.data
+    head = head.next_item
+  end
+  string << head.data #last
+
+  puts string.join('->')
+end
+
 ######## HELPERS ########

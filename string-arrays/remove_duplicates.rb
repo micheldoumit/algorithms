@@ -1,4 +1,4 @@
-require_relative 'helpers'
+require_relative '../helpers'
 
 # mine
 def remove_duplicates(chars)

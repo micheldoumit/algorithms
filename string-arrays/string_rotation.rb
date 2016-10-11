@@ -1,4 +1,4 @@
-require_relative 'helpers'
+require_relative '../helpers'
 
 
 def rotation?(str1, str2)

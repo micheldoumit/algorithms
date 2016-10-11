@@ -1,4 +1,4 @@
-require_relative 'helpers.rb'
+require_relative '../helpers.rb'
 
 # 1.1 Check that all characters are unique on a string
 
