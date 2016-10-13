@@ -14,13 +14,17 @@ def assert(actual, expected)
   puts_green "."
 end
 
-def print_array(array)
+def print_bidimensional_array(array)
   separator = ''
   array.length.times { separator += "-"}
   array.each do |r|
     puts r.each { |p| p }.join(" ")
   end
   puts separator
+end
+
+def print_array(array)
+  puts "[#{array.join(',')}]"
 end
 
 def list(array)

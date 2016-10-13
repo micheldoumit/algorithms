@@ -24,7 +24,7 @@ end
 
 # mine
 def rotate_90(image)
-  print_array(image)
+  print_bidimensional_array(image)
   result = []
   image.length.times { result << [] }
   n = image.length - 1
@@ -35,7 +35,7 @@ def rotate_90(image)
       result[y][n-x] = current
     end
   end
-  print_array(result)
+  print_bidimensional_array(result)
   result
 end
 
@@ -43,9 +43,9 @@ test('rotate_90')
 
 # mine take 2 (in place)
 def rotate_90_in_place(array)
-  print_array(array)
+  print_bidimensional_array(array)
   process(array, 0, array.length-1, array[0][array.length-1])
-  print_array(array)
+  print_bidimensional_array(array)
 end
 
 def process(array, x, y, value)
@@ -80,7 +80,7 @@ def rotate_90_book(matrix)
       matrix[element][last] = top
     end
   end
-  print_array(matrix)
+  print_bidimensional_array(matrix)
   matrix
 end
 
