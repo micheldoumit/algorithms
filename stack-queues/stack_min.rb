@@ -1,7 +1,7 @@
 require_relative '../helpers'
 require_relative 'stack_node'
 
-# min
+# mine
 class StackMin
 
   attr_accessor :min, :buffer
@@ -43,7 +43,7 @@ assert(stacks.min, 2)
 assert(stacks.pop, 2)
 assert(stacks.min, 5)
 
-
+# book optimized
 class StackMin2
 
   attr_accessor :buffer, :mins
