@@ -1,6 +1,6 @@
 require_relative '../helpers'
 
-class StacksWithExtra
+class StacksReserved
 
   attr_accessor :size, :buffer, :pointer
 
@@ -27,7 +27,7 @@ class StacksWithExtra
 
 end
 
-stacks = StacksWithExtra.new
+stacks = StacksReserved.new
 stacks.push(0,"A1")
 stacks.push(0,"A2")
 stacks.push(0,"A3")
