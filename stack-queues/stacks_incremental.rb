@@ -1,5 +1,6 @@
 require_relative '../helpers'
 
+# book
 class StacksIncremental
 
   attr_accessor :size, :buffer, :pointer, :used

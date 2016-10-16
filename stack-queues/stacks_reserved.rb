@@ -1,5 +1,6 @@
 require_relative '../helpers'
 
+# book
 class StacksReserved
 
   attr_accessor :size, :buffer, :pointer
