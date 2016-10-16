@@ -32,15 +32,6 @@ class StacksIncremental
 end
 
 
-class StackNode
-  attr_accessor :value, :previous
-
-  def initialize(value, previous)
-    self.value = value
-    self.previous = previous
-  end
-end
-
 stacks = StacksIncremental.new
 stacks.push(0,"A1")
 stacks.push(0,"A2")
