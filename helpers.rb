@@ -43,4 +43,14 @@ def print_linked_list(head)
   puts string.join('->')
 end
 
+def print_linked_stack(stack)
+  string = []
+  while(stack.length > 0)
+    puts "#{stack.length}"
+    string << stack.pop
+  end
+
+  puts string.join('->')
+end
+
 ######## HELPERS ########

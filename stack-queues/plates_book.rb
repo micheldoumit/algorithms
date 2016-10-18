@@ -1,10 +1,10 @@
 # 0: 1, 2, 3, 4, 5
 # 1: 6, 7, 8, 9, 10
-require_relative 'stack'
+require_relative 'stack_linked'
 require_relative '../helpers'
 
 # mine
-class SetOfStacks
+class SetOfStacksBook
   attr_accessor :stacks, :limit
 
   def initialize(limit)
@@ -15,7 +15,7 @@ class SetOfStacks
   def push(value)
     stack = nil
     if self.stacks.length == 0
-      stack = Stack.new
+      stack = StackLinked.new
       self.stacks << stack
     else
       self.stacks.each do |stack_item|
@@ -25,7 +25,7 @@ class SetOfStacks
         end
       end
       if stack == nil
-        stack = Stack.new
+        stack = StackLinked.new
         self.stacks << stack
       end
     end
@@ -45,7 +45,7 @@ class SetOfStacks
 
     if index < self.stacks.length-1
       for i in (self.stacks.length-1).downto(index+1)
-        last = pop_last(self.stacks[i])
+        last = self.stacks[i].remove_bottom.value
         self.stacks[i-1].push(last)
       end
     end
@@ -53,27 +53,10 @@ class SetOfStacks
     result
   end
 
-  def pop_last(stack)
-    tmp = []
-    while stack.length > 1
-      tmp << stack.pop
-    end
-    last = stack.pop
-    tmp.each { |t| stack.push(t)}
-    last
-  end
-
 end
 
-set_of_stacks = SetOfStacks.new(3)
-5.times { |i| set_of_stacks.push(i) }
-assert(set_of_stacks.pop, 4)
-assert(set_of_stacks.pop, 3)
-assert(set_of_stacks.pop, 2)
-assert(set_of_stacks.pop, 1)
-assert(set_of_stacks.pop, 0)
-
 # popt_at
+set_of_stacks = SetOfStacksBook.new(3)
 11.times { |i| set_of_stacks.push(i) }
 assert(set_of_stacks.pop_at(0), 2)
 assert(set_of_stacks.stacks[0].length, 3)
