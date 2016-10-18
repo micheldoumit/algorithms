@@ -1,7 +1,11 @@
 require_relative '../linked-list/linked_list_node'
 
 class Stack
-  attr_accessor :top
+  attr_accessor :top, :length
+
+  def initialize
+    self.length = 0
+  end
 
   def push(value)
     node = LinkedListNode.new(value)
@@ -12,6 +16,7 @@ class Stack
       self.top = node
     end
 
+    self.length += 1
     true
   end
 
@@ -23,6 +28,7 @@ class Stack
       self.top = top.next_item
     end
 
+    self.length -= 1
     value.data
   end
 end

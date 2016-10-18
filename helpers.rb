@@ -32,12 +32,13 @@ def list(array)
 end
 
 def print_linked_list(head)
+  return nil if head == nil
   string = []
   while(head.next_item != nil)
     string << head.data
     head = head.next_item
   end
-  string << head.data #last
+  string << head.data
 
   puts string.join('->')
 end
