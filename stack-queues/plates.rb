@@ -39,6 +39,10 @@ class SetOfStacks
     end
   end
 
+  def pop_at(index)
+    stacks.at(index).pop
+  end
+
 end
 
 set_of_stacks = SetOfStacks.new(3)
@@ -52,7 +56,4 @@ set_of_stacks.push(6)
 set_of_stacks.push(7)
 set_of_stacks.push(8)
 set_of_stacks.push(9)
-assert(set_of_stacks.pop, 9)
-assert(set_of_stacks.pop, 8)
-assert(set_of_stacks.pop, 7)
-assert(set_of_stacks.pop, 6)
+assert(set_of_stacks.pop_at(0), 8)
